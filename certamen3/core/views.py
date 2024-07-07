@@ -43,8 +43,8 @@ def registro_produccion(request):
     return render(request, 'core/registro.html', {'form': form})
 
 @login_required
-def profile(request):
-    return render(request, 'core/profile.html')
+def perfil(request):
+    return render(request, 'core/perfil.html')
 
 @login_required
 def user_registros(request):
