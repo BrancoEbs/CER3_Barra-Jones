@@ -47,7 +47,7 @@ def perfil(request):
     return render(request, 'core/perfil.html')
 
 @login_required
-def user_registros(request):
+def mis_registros(request):
     registros = RegistroProduccion.objects.filter(operador=request.user)
     return render(request, 'core/mis_registros.html', {'registros': registros})
 

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import PlantaList, ProductoList, RegistroProduccionList, RegistroProduccionDetail, home, registro_produccion, perfil, user_registros, editar_registro
+from .views import PlantaList, ProductoList, RegistroProduccionList, RegistroProduccionDetail, home, registro_produccion, perfil, mis_registros, editar_registro
 
 app_name = 'core'
 
@@ -11,6 +11,6 @@ urlpatterns = [
     path('api/registros/', RegistroProduccionList.as_view(), name='registroproduccion-list'),
     path('api/registros/<int:pk>/', RegistroProduccionDetail.as_view(), name='registroproduccion-detail'),
     path('perfil/', perfil, name='perfil'),
-    path('mis-registros/', user_registros, name='mis_registros'),
+    path('mis-registros/', mis_registros, name='mis_registros'),
     path('editar-registro/<int:pk>/', editar_registro, name='editar_registro'),
 ]
