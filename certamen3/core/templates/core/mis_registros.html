@@ -12,6 +12,7 @@
                 <th>Fecha de Producción</th>
                 <th>Turno</th>
                 <th>Hora de Registro</th>
+                <th>Total Litros</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -23,6 +24,7 @@
                     <td>{{ registro.fecha_produccion }}</td>
                     <td>{{ registro.turno }}</td>
                     <td>{{ registro.hora_registro }}</td>
+                    <td>{{ registro.total_litros }}</td>
                     <td>
                         <a href="{% url 'core:editar_registro' registro.pk %}" class="btn btn-warning btn-sm">Editar</a>
                     </td>

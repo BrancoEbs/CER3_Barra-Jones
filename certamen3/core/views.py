@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Planta, Producto, RegistroProduccion
 from .forms import RegistroProduccionForm
+from django.db.models import Sum
 
 class PlantaList(generics.ListCreateAPIView):
     queryset = Planta.objects.all()
@@ -32,8 +33,13 @@ def registro_produccion(request):
         form = RegistroProduccionForm(request.POST)
         if form.is_valid():
             try:
+
                 registro = form.save(commit=False)
                 registro.operador = request.user
+                total_litros = RegistroProduccion.objects.filter(producto=registro.producto).aggregate(Sum('litros'))['litros__sum']
+                if total_litros is None:
+                    total_litros = 0
+                registro.total_litros = total_litros + registro.litros
                 registro.save()
                 return redirect('core:home')
             except Exception as e:
