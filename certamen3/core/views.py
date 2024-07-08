@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Planta, Producto, RegistroProduccion
 from .forms import RegistroProduccionForm
 from django.db.models import Sum
+from .utils import send_slack_notification
 
 class PlantaList(generics.ListCreateAPIView):
     queryset = Planta.objects.all()
@@ -41,7 +42,17 @@ def registro_produccion(request):
                     total_litros = 0
                 registro.total_litros = total_litros + registro.litros
                 registro.save()
+                
+                cod_planta = "PRG"  
+                cod_produ = registro.pk  
+                cod_combustible = registro.producto.codigo  
+                litros = registro.litros
+                total = registro.total_litros  
+
+                send_slack_notification(cod_planta, cod_produ, cod_combustible, litros, total)
+
                 return redirect('core:home')
+            
             except Exception as e:
                 form.add_error(None, 'Error al registrar la producción: ' + str(e))
     else:

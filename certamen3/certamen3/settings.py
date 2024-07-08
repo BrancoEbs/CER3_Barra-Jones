@@ -123,3 +123,5 @@ REST_FRAMEWORK = {
 
 # Redirigir al usuario a la página de inicio después de cerrar sesión
 LOGOUT_REDIRECT_URL = 'core:home'
+
+SLACK_API_TOKEN='xoxb-7384846226802-7379712715574-3cGH7mSfNnFxrfD2hwoPZHkj'
