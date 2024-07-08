@@ -7,6 +7,6 @@ urlpatterns = [
     path('core/', include('core.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('api-auth/', include('rest_framework.urls')),
-    path('accounts/logout/', auth_views.LogoutView.as_view(next_page='core:home'), name='logout'),  # Redirigir a home después de logout
+    path('accounts/logout/', auth_views.LogoutView.as_view(next_page='core:home'), name='logout'), 
     path('', include('core.urls')),
 ]
