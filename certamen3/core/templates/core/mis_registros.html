@@ -1,0 +1,33 @@
+{% extends "core/base.html" %}
+
+{% block title %}Mis Registros{% endblock %}
+
+{% block content %}
+    <h2>Mis Registros de Producción</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Litros</th>
+                <th>Fecha de Producción</th>
+                <th>Turno</th>
+                <th>Hora de Registro</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for registro in registros %}
+                <tr>
+                    <td>{{ registro.producto.nombre }}</td>
+                    <td>{{ registro.litros }}</td>
+                    <td>{{ registro.fecha_produccion }}</td>
+                    <td>{{ registro.turno }}</td>
+                    <td>{{ registro.hora_registro }}</td>
+                    <td>
+                        <a href="{% url 'core:editar_registro' registro.pk %}" class="btn btn-warning btn-sm">Editar Registro</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

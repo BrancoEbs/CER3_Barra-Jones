@@ -49,7 +49,7 @@ def perfil(request):
 @login_required
 def user_registros(request):
     registros = RegistroProduccion.objects.filter(operador=request.user)
-    return render(request, 'core/user_registros.html', {'registros': registros})
+    return render(request, 'core/mis_registros.html', {'registros': registros})
 
 
 @login_required
@@ -59,7 +59,7 @@ def editar_registro(request, pk):
         form = RegistroProduccionForm(request.POST, instance=registro)
         if form.is_valid():
             form.save()
-            return redirect('core:user_registros')
+            return redirect('core:mis_registros')
     else:
         form = RegistroProduccionForm(instance=registro)
     return render(request, 'core/editar_registro.html', {'form': form, 'registro': registro})
