@@ -10,7 +10,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{% url 'core:home' %}">ENC</a>
+        <a class="navbar-brand" href="{% url 'core:home' %}">Producción</a>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
@@ -20,23 +20,23 @@
                     <a class="nav-link" href="{% url 'core:registro_produccion' %}">Registrar Producción</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'core:mis_registros' %}">Mis Registros</a>
+                    <a class="nav-link" href="{% url 'core:mis_registros' %}">Mis Registros</a>  <!-- Cambia aquí -->
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="/perfil">{{ user.username }}</a>
+                        <a class="nav-link" href="#">{{ user.username }}</a>
                     </li>
                     <li class="nav-item">
                         <form method="post" action="{% url 'logout' %}" style="display:inline;">
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-link nav-link" style="display:inline; cursor: pointer;">Cerrar Sesion</button>
+                            <button type="submit" class="btn btn-link nav-link" style="display:inline; cursor: pointer;">Logout</button>
                         </form>
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Iniciar Sesion</a>
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
                     </li>
                 {% endif %}
             </ul>

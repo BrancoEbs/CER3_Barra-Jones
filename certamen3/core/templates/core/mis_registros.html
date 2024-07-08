@@ -18,13 +18,13 @@
         <tbody>
             {% for registro in registros %}
                 <tr>
-                    <td>{{ registro.producto.nombre }}</td>
+                    <td>{{ registro.producto }}</td>
                     <td>{{ registro.litros }}</td>
                     <td>{{ registro.fecha_produccion }}</td>
                     <td>{{ registro.turno }}</td>
                     <td>{{ registro.hora_registro }}</td>
                     <td>
-                        <a href="{% url 'core:editar_registro' registro.pk %}" class="btn btn-warning btn-sm">Editar Registro</a>
+                        <a href="{% url 'core:editar_registro' registro.pk %}" class="btn btn-warning btn-sm">Editar</a>
                     </td>
                 </tr>
             {% endfor %}

@@ -34,7 +34,7 @@ class RegistroProduccion(models.Model):
     litros = models.FloatField()
     fecha_produccion = models.DateField()
     turno = models.CharField(max_length=2, choices=TURNOS)
-    hora_registro = models.TimeField(auto_now_add=True)
+    hora_registro = models.DateTimeField(auto_now_add=True)
     operador = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
     def __str__(self):
